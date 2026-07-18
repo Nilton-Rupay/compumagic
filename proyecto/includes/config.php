@@ -5,14 +5,14 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 // 1. Definimos las credenciales de Aiven
-define('DB_HOST', 'compu-magic-sistema-ventas.k.aivencloud.com');
-define('DB_PORT', 23735); // Puerto personalizado de Aiven
-define('DB_USER', 'avnadmin');
-define('DB_PASS', ''); // Completa esta contraseña en tu entorno local
+define('DB_HOST', getenv('DB_HOST') ?: 'compu-magic-sistema-ventas.k.aivencloud.com');
+define('DB_PORT', (int) (getenv('DB_PORT') ?: '23735')); // Puerto personalizado de Aiven
+define('DB_USER', getenv('DB_USER') ?: 'avnadmin');
+define('DB_PASS', getenv('DB_PASS') ?: ''); // Completa esta contraseña en tu entorno local o define la variable DB_PASS
 
 // Si importaste tu base de datos en 'defaultdb', déjalo así. 
 // Si creaste una base de datos con otro nombre en Workbench, pon ese nombre aquí.
-define('DB_NAME', 'sistema_ventas'); 
+define('DB_NAME', getenv('DB_NAME') ?: 'sistema_ventas'); 
 
 // 2. Iniciamos el objeto mysqli sin conectar inmediatamente para poder configurar SSL
 $conexion = mysqli_init();

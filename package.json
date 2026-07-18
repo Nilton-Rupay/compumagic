@@ -1,0 +1,7 @@
+{
+  "name": "compumagic-vercel",
+  "private": true,
+  "dependencies": {
+    "@vercel/php": "^0.1.0"
+  }
+}
